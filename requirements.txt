@@ -1,0 +1,20 @@
+fastapi==0.111.0
+uvicorn==0.30.1
+python-dotenv==1.0.1
+requests==2.32.3
+beautifulsoup4==4.12.3
+langchain==0.2.11
+langchain-community==0.2.11
+langchain-google-genai==2.1.5
+google-generativeai==0.8.5
+faiss-cpu==1.8.0 # Use faiss-gpu if you have a GPU
+pydantic==2.7.1
+numpy==1.26.4
+pandas==2.2.2
+matplotlib==3.9.0
+streamlit==1.36.0 # UPDATED: Changed to 1.36.0 to include audio_recorder
+gtts==2.5.1
+transformers==4.41.2
+soundfile==0.12.1
+python-multipart==0.0.9
+APScheduler==3.10.4
