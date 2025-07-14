@@ -55,3 +55,148 @@ mkdir finance_bot
 cd finance_bot
 # Create agents/docs/streamlit_app subdirectories
 mkdir agents docs streamlit_app
+📈 AI-Powered Financial Assistant
+Welcome to your open-source, multi-agent finance assistant that delivers daily spoken market briefs, analyzes uploaded documents and images, and answers financial queries via voice or text!
+
+🚀 Features
+ Ask in natural language (text or voice)
+ Upload images (financial statements, screenshots) for analysis
+ Get live stock prices from AlphaVantage/Yahoo Finance
+ Retrieval-Augmented Generation (RAG) over financial documents
+ Daily market summary with voice output
+
+🗺️ Architecture Overview
+This system uses modular agents orchestrated via FastAPI microservices:
+
+🎛️ Agents
+Agent	Description	Tools/Frameworks
+API Agent	Fetches live market data	AlphaVantage / Yahoo Finance, FastAPI
+Scraping Agent	Crawls earnings filings (SEC etc.)	BeautifulSoup, FastAPI
+Retriever Agent	Embeds and queries documents	LangChain, FAISS
+Analysis Agent	Summarizes risk exposure & earnings surprises	LangChain, OpenAI, Pandas
+Language Agent	Synthesizes narrative	LangChain RetrieverQA, OpenAI
+Voice Agent	Speech-to-text and text-to-speech	Whisper, gTTS
+
+🗂️ Directories
+Copy
+Edit
+finance_assistant/
+├── agents/
+│   ├── api_agent.py
+│   ├── scraping_agent.py
+│   ├── retriever_agent.py
+│   ├── analysis_agent.py
+│   ├── language_agent.py
+│   └── voice_agent.py
+├── orchestrator/
+│   └── orchestrator.py
+├── streamlit_app/
+│   └── streamlit_app.py
+├── data_ingestion/
+│   └── sec_scraper.py
+├── notebooks/
+│   └── Finance_Assistant_Notebook.ipynb
+├── requirements.txt
+├── Dockerfile
+├── README.md
+└── docs/
+    └── ai_tool_usage.md
+📸 User Interface (Example)
+
+Your Streamlit app supports:
+
+💬 Text questions
+
+📸 Image upload for OCR/analysis
+
+🎤 Voice upload for STT
+
+📈 Spoken market briefs
+
+⚙️ Setup & Installation
+1️⃣ Clone the Repo
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/finance-assistant.git
+cd finance-assistant
+2️⃣ Install Requirements
+bash
+Copy
+Edit
+pip install -r requirements.txt
+3️⃣ Set Environment Variables
+Create a .env file:
+
+ini
+Copy
+Edit
+OPENAI_API_KEY=your-key
+ALPHAVANTAGE_API_KEY=your-key
+4️⃣ Run Microservices
+Each agent is a FastAPI service:
+
+bash
+Copy
+Edit
+uvicorn agents.api_agent:app --reload --port 8001
+uvicorn agents.scraping_agent:app --reload --port 8002
+...
+uvicorn orchestrator.orchestrator:app --reload --port 9000
+5️⃣ Run Streamlit App
+bash
+Copy
+Edit
+streamlit run streamlit_app/streamlit_app.py
+🌐 Deployment
+✅ Dockerfile included for containerized deployment.
+✅ Supports Render, Railway, or Streamlit Community Cloud.
+✅ You can use ngrok for local tunneling:
+
+ Use Case: Morning Market Brief
+Example query:
+
+“What’s our risk exposure in Asia tech stocks today, and highlight any earnings surprises?”
+
+Example response:
+
+“Today, your Asia tech allocation is 22% of AUM, up from 18% yesterday. TSMC beat estimates by 4%, Samsung missed by 2%. Regional sentiment is neutral with a cautionary tilt due to rising yields.”
+
+📑 Documentation
+✅ /docs/ai_tool_usage.md — Logs of all prompts, LLM parameters
+✅ /notebooks/ — Exploratory pipelines for agents and retrieval
+✅ /agents/ — Modular FastAPI microservices
+✅ /streamlit_app/ — User-friendly front-end
+
+🧠 Tech Stack
+LangChain for Retrieval-Augmented Generation (RAG)
+
+FAISS for vector storage
+
+OpenAI for LLM & embeddings
+
+BeautifulSoup for scraping
+
+Whisper for speech-to-text
+
+gTTS for text-to-speech
+
+CrewAI / LangGraph for agent orchestration
+
+FastAPI for microservices
+
+Streamlit for UI
+
+📌 License
+Open-source, MIT License.
+
+🙌 Acknowledgements
+OpenAI
+
+AlphaVantage
+
+Whisper
+
+LangChain
+
+Streamlit
