@@ -3,7 +3,7 @@ uvicorn==0.30.1
 python-dotenv==1.0.1
 requests==2.32.3
 beautifulsoup4==4.12.3
-langchain==0.2.12         # FIXED to satisfy langchain-community
+langchain
 langchain-community==0.2.11
 langchain-google-genai==2.1.5
 google-generativeai==0.8.5
